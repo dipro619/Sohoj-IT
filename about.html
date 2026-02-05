@@ -37,6 +37,8 @@
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 80px;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         body {
@@ -45,6 +47,8 @@
             background-color: var(--background);
             line-height: 1.6;
             overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -57,12 +61,13 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
         section {
             padding: 80px 0;
             position: relative;
+            width: 100%;
         }
 
         /* === ANIMATIONS === */
@@ -230,6 +235,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 15px;
+            width: 100%;
         }
 
         .logo {
@@ -290,7 +297,7 @@
             height: 100vh;
             background-color: var(--white);
             flex-direction: column;
-            padding: 100px 30px 40px;
+            padding: 100px 20px 40px;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
             overflow-y: auto;
@@ -331,10 +338,30 @@
             color: var(--primary);
         }
 
+        /* === DROPDOWN ICON - FIXED POSITIONING === */
+        .dropdown-icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
         .dropdown-icon {
-            margin-left: 5px;
             transition: transform 0.3s ease;
             font-size: 0.9rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+        }
+
+        .dropdown-icon:hover {
+            background: rgba(0, 0, 0, 0.05);
         }
 
         .dropdown-icon.rotated {
@@ -384,6 +411,7 @@
             position: relative;
             overflow: hidden;
             margin-top: 80px;
+            width: 100%;
         }
 
         .about-hero::before {
@@ -428,6 +456,8 @@
             margin-bottom: 50px;
             overflow: hidden;
             position: relative;
+            width: 100%;
+            padding: 0 10px;
         }
 
         .section-title h2 {
@@ -438,6 +468,7 @@
             display: inline-block;
             opacity: 0;
             transform: translateY(30px);
+            padding: 0 10px;
         }
 
         .section-title.animated h2 {
@@ -451,6 +482,7 @@
             margin: 15px auto 0;
             opacity: 0;
             transform: translateY(20px);
+            padding: 0 10px;
         }
 
         .section-title.animated p {
@@ -495,12 +527,14 @@
         /* === MISSION VISION SECTION === */
         .mission-vision-section {
             background-color: var(--white);
+            width: 100%;
         }
 
         .mission-vision-container {
             display: grid;
             grid-template-columns: 1fr;
             gap: 30px;
+            width: 100%;
         }
 
         .mission-card, .vision-card {
@@ -511,6 +545,7 @@
             text-align: center;
             opacity: 0;
             transform: translateY(30px);
+            width: 100%;
         }
 
         .mission-card.animated, .vision-card.animated {
@@ -551,12 +586,14 @@
         /* === VALUES SECTION === */
         .values-section {
             background-color: var(--background);
+            width: 100%;
         }
 
         .values-container {
             display: grid;
             grid-template-columns: 1fr;
             gap: 25px;
+            width: 100%;
         }
 
         .value-card {
@@ -569,6 +606,7 @@
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
         }
 
         .value-card.animated {
@@ -615,12 +653,14 @@
         /* === TEAM SECTION === */
         .team-section {
             background-color: var(--white);
+            width: 100%;
         }
 
         .team-container {
             display: grid;
             grid-template-columns: 1fr;
             gap: 30px;
+            width: 100%;
         }
 
         .team-card {
@@ -634,6 +674,7 @@
             display: flex;
             flex-direction: column;
             height: 100%;
+            width: 100%;
         }
 
         .team-card.animated {
@@ -723,12 +764,14 @@
         /* === TIMELINE SECTION === */
         .timeline-section {
             background-color: var(--background);
+            width: 100%;
         }
 
         .timeline {
             position: relative;
             max-width: 800px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .timeline::before {
@@ -746,6 +789,7 @@
             position: relative;
             opacity: 0;
             transform: translateY(30px);
+            width: 100%;
         }
 
         .timeline-item.animated {
@@ -811,6 +855,7 @@
             padding: 60px 0 30px;
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
 
         .footer-container {
@@ -818,11 +863,13 @@
             flex-direction: column;
             gap: 40px;
             margin-bottom: 40px;
+            width: 100%;
         }
 
         .footer-column {
             opacity: 0;
             transform: translateY(20px);
+            width: 100%;
         }
 
         .footer-column.animated {
@@ -907,10 +954,19 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #d1d5db;
             font-size: 0.9rem;
+            width: 100%;
         }
 
         /* === DROPDOWN FOR DESKTOP === */
         @media (min-width: 992px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .nav-container {
+                padding: 0;
+            }
+            
             .nav-menu {
                 position: static;
                 width: auto;
@@ -963,12 +1019,6 @@
 
             .nav-link:hover {
                 color: var(--logo-red);
-            }
-
-            .nav-link .dropdown-icon {
-                display: inline-block;
-                margin-left: 8px;
-                font-size: 0.8rem;
             }
 
             .mobile-toggle {
@@ -1093,6 +1143,14 @@
 
         /* === MOBILE SPECIFIC FIXES === */
         @media (max-width: 767px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
             .about-hero {
                 padding: 120px 0 80px;
             }
@@ -1105,32 +1163,45 @@
                 font-size: 1.1rem;
             }
 
-            /* FIXED: Timeline mobile alignment */
+            /* Timeline mobile alignment */
             .timeline::before {
-                left: 30px; /* Moved from 20px to 30px for better alignment */
+                left: 30px;
             }
 
             .timeline-content {
-                width: calc(100% - 80px); /* Increased from 60px to 80px */
-                margin-left: 80px !important; /* Increased from 60px to 80px */
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
                 margin-right: 0 !important;
             }
 
             .timeline-year {
-                left: 5px !important; /* Changed from -30px to 5px */
+                left: 5px !important;
                 right: auto !important;
                 width: 60px;
                 height: 60px;
                 font-size: 1rem;
             }
 
-            /* Ensure team cards have consistent height */
+            /* Team cards */
             .team-card {
                 min-height: 500px;
             }
             
             .team-info {
                 min-height: 220px;
+            }
+            
+            /* Fixed dropdown icon positioning on mobile */
+            .nav-link {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-right: 10px;
+            }
+            
+            .dropdown-icon-container {
+                margin-left: auto;
+                padding-left: 10px;
             }
         }
 
@@ -1151,6 +1222,12 @@
             .timeline::before {
                 left: 25px;
             }
+            
+            .dropdown-icon {
+                padding: 6px;
+                width: 28px;
+                height: 28px;
+            }
         }
     </style>
 </head>
@@ -1167,7 +1244,9 @@
                 <li class="nav-item">
                     <a href="about.html" class="nav-link active">
                         <span>About Us</span>
-                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                        <div class="dropdown-icon-container">
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
                     </a>
                     <div class="dropdown">
                         <a href="about.html" class="dropdown-item">About Company</a>
@@ -1176,24 +1255,28 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="index.html#courses" class="nav-link">
+                    <a href="courses.html" class="nav-link">
                         <span>Courses</span>
-                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                        <div class="dropdown-icon-container">
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
                     </a>
                     <div class="dropdown">
-                        <a href="#web-development" class="dropdown-item">Web Development</a>
-                        <a href="#graphic-design" class="dropdown-item">Graphic Design</a>
-                        <a href="#digital-marketing" class="dropdown-item">Digital Marketing</a>
-                        <a href="#programming" class="dropdown-item">Programming</a>
-                        <a href="#freelancing" class="dropdown-item">Freelancing</a>
-                        <a href="#freelancing" class="dropdown-item">Basic Computer</a>
-                        <a href="#freelancing" class="dropdown-item">Advance Office </a>
+                        <a href="web-development-course.html" class="dropdown-item">Web Development</a>
+                        <a href="graphic-design-course.html" class="dropdown-item">Graphic Design</a>
+                        <a href="digital-marketing-course.html" class="dropdown-item">Digital Marketing</a>
+                        <a href="programming-course.html" class="dropdown-item">Programming</a>
+                        <a href="freelancing-course.html" class="dropdown-item">Freelancing</a>
+                        <a href="basic-computer-course.html" class="dropdown-item">Basic Computer</a>
+                        <a href="office-course.html" class="dropdown-item">Advance Office</a>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a href="index.html#services" class="nav-link">
                         <span>Services</span>
-                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                        <div class="dropdown-icon-container">
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
                     </a>
                     <div class="dropdown">
                         <a href="#corporate-training" class="dropdown-item">Corporate Training</a>
@@ -1485,61 +1568,81 @@
 
         // === DROPDOWN FUNCTIONALITY ===
         function setupDropdowns() {
-            const dropdownTriggers = document.querySelectorAll('.nav-link');
+            const dropdownIcons = document.querySelectorAll('.dropdown-icon');
+            const navItems = document.querySelectorAll('.nav-item');
             
-            dropdownTriggers.forEach(trigger => {
-                if (trigger.querySelector('.dropdown-icon')) {
-                    const dropdown = trigger.parentElement.querySelector('.dropdown');
+            // Handle dropdown icon clicks
+            dropdownIcons.forEach(icon => {
+                icon.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     
-                    trigger.addEventListener('click', (e) => {
-                        const clickedIcon = e.target.closest('.dropdown-icon');
-                        const clickedLink = e.target.closest('.nav-link');
-                        
-                        if (window.innerWidth < 992) {
-                            e.preventDefault();
-                            const isActive = dropdown.classList.contains('active');
-                            
-                            // Close all other dropdowns
-                            document.querySelectorAll('.dropdown').forEach(d => {
-                                if (d !== dropdown) {
-                                    d.classList.remove('active');
-                                }
-                            });
-                            
-                            // Toggle current dropdown
-                            dropdown.classList.toggle('active');
-                            
-                            // Rotate icon
-                            const icon = trigger.querySelector('.dropdown-icon');
-                            icon.classList.toggle('rotated', !isActive);
-                        } else {
-                            if (clickedIcon) {
-                                e.preventDefault();
-                                dropdown.classList.toggle('active');
-                                const icon = trigger.querySelector('.dropdown-icon');
-                                icon.classList.toggle('rotated');
+                    const navItem = icon.closest('.nav-item');
+                    const dropdown = navItem.querySelector('.dropdown');
+                    const isActive = dropdown.classList.contains('active');
+                    
+                    // Close all other dropdowns on mobile
+                    if (window.innerWidth < 992) {
+                        document.querySelectorAll('.dropdown').forEach(d => {
+                            if (d !== dropdown) {
+                                d.classList.remove('active');
+                                d.closest('.nav-item').querySelector('.dropdown-icon')?.classList.remove('rotated');
                             }
-                        }
-                    });
+                        });
+                    }
                     
-                    // Desktop hover handler
-                    trigger.parentElement.addEventListener('mouseenter', () => {
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('active');
+                    icon.classList.toggle('rotated', !isActive);
+                });
+            });
+            
+            // Desktop hover functionality
+            navItems.forEach(item => {
+                const dropdown = item.querySelector('.dropdown');
+                const icon = item.querySelector('.dropdown-icon');
+                
+                if (dropdown && icon) {
+                    // Desktop hover
+                    item.addEventListener('mouseenter', () => {
                         if (window.innerWidth >= 992) {
                             dropdown.classList.add('active');
-                            trigger.querySelector('.dropdown-icon')?.classList.add('rotated');
+                            icon.classList.add('rotated');
                         }
                     });
                     
-                    trigger.parentElement.addEventListener('mouseleave', () => {
+                    item.addEventListener('mouseleave', () => {
                         if (window.innerWidth >= 992) {
                             dropdown.classList.remove('active');
-                            trigger.querySelector('.dropdown-icon')?.classList.remove('rotated');
+                            icon.classList.remove('rotated');
                         }
+                    });
+                    
+                    // Mobile: Close dropdown when clicking dropdown item
+                    dropdown.querySelectorAll('.dropdown-item').forEach(dropdownItem => {
+                        dropdownItem.addEventListener('click', () => {
+                            if (window.innerWidth < 992) {
+                                dropdown.classList.remove('active');
+                                icon.classList.remove('rotated');
+                                
+                                // Close mobile menu
+                                const navMenu = document.querySelector('.nav-menu');
+                                const mobileToggle = document.querySelector('.mobile-toggle');
+                                if (navMenu?.classList.contains('active')) {
+                                    navMenu.classList.remove('active');
+                                    mobileToggle?.classList.remove('active');
+                                    if (mobileToggle) {
+                                        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                                    }
+                                    document.body.style.overflow = '';
+                                }
+                            }
+                        });
                     });
                 }
             });
             
-            // Close dropdowns when clicking outside
+            // Close dropdowns when clicking outside (mobile only)
             document.addEventListener('click', (e) => {
                 if (window.innerWidth < 992) {
                     if (!e.target.closest('.nav-item')) {
@@ -1609,13 +1712,51 @@
                 }
             });
 
+            // Navigation link clicks
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // If clicking on the dropdown icon, don't navigate
+                    if (e.target.closest('.dropdown-icon-container') || 
+                        e.target.classList.contains('dropdown-icon') ||
+                        e.target.closest('.dropdown-icon')) {
+                        e.preventDefault();
+                        return;
+                    }
+                    
+                    const href = link.getAttribute('href');
+                    
+                    // Close mobile menu after clicking a link
+                    if (window.innerWidth < 992) {
+                        const navMenu = document.querySelector('.nav-menu');
+                        const mobileToggle = document.querySelector('.mobile-toggle');
+                        if (navMenu?.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                            mobileToggle?.classList.remove('active');
+                            if (mobileToggle) {
+                                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                            }
+                            document.body.style.overflow = '';
+                            
+                            // Close all dropdowns
+                            document.querySelectorAll('.dropdown').forEach(d => {
+                                d.classList.remove('active');
+                            });
+                            document.querySelectorAll('.dropdown-icon').forEach(icon => {
+                                icon.classList.remove('rotated');
+                            });
+                        }
+                    }
+                });
+            });
+
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const targetId = this.getAttribute('href');
                     if (targetId === '#' || targetId.startsWith('#!')) return;
                     
-                    if (window.innerWidth < 992 && this.classList.contains('dropdown-item')) {
+                    // Don't prevent default for dropdown items
+                    if (this.classList.contains('dropdown-item')) {
                         return;
                     }
                     
@@ -1638,6 +1779,14 @@
                                     mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
                                 }
                                 document.body.style.overflow = '';
+                                
+                                // Close all dropdowns
+                                document.querySelectorAll('.dropdown').forEach(d => {
+                                    d.classList.remove('active');
+                                });
+                                document.querySelectorAll('.dropdown-icon').forEach(icon => {
+                                    icon.classList.remove('rotated');
+                                });
                             }
                         }
                     }
