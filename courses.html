@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Sohoj IT | IT Training Institute & Solutions Agency</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === ROOT VARIABLES === */
+        :root {
+            --primary: #bb0000;
+            --secondary: #ffffff;
+            --accent: #F97316;
+            --text: #000000;
+            --background: #F9FAFB;
+            --white: #FFFFFF;
+            --gray-light: #E5E7EB;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 16px;
+            --border-radius-sm: 12px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --box-shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --logo-red: #E63946;
+            --logo-black: #000000;
+            --animation-duration: 0.8s;
+        }
+
+        /* === RESET & BASE STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* === BUTTONS === */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            min-height: 48px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #000000);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(187, 0, 0, 0.25);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(187, 0, 0, 0.35);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, black, #00ff40);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(0, 255, 64, 0.25);
+            border: none;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 255, 64, 0.35);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent), #ea580c);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.25);
+            border: none;
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.35);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .btn-outline::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn-outline:hover {
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(187, 0, 0, 0.25);
+            border-color: var(--primary);
+        }
+
+        .btn-outline:hover::after {
+            width: 100%;
+        }
+
+        /* === NAVBAR (MOBILE FIRST) === */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo.scrolled-logo {
+            color: var(--logo-black);
+        }
+
+        .logo i {
+            margin-right: 8px;
+            color: var(--logo-red);
+            font-size: 1.8rem;
+        }
+
+        .logo span:first-child {
+            color: var(--white);
+            font-weight: 900;
+        }
+
+        .logo span:last-child {
+            color: var(--logo-red);
+            font-weight: 900;
+        }
+
+        .scrolled-logo span:first-child {
+            color: var(--logo-black);
+        }
+
+        /* === MOBILE TOGGLE === */
+        .mobile-toggle {
+            display: flex;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1001;
+        }
+
+        .mobile-toggle.scrolled-toggle {
+            color: var(--logo-black);
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .mobile-toggle.active {
+            color: var(--logo-red);
+            transform: rotate(90deg);
+        }
+
+        /* === NAV MENU (MOBILE) === */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background-color: var(--white);
+            flex-direction: column;
+            padding: 100px 30px 40px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+            overflow-y: auto;
+            z-index: 999;
+            list-style: none;
+        }
+
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-item {
+            margin-bottom: 10px;
+            width: 100%;
+            position: relative;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            width: 100%;
+            position: relative;
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .dropdown-icon {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        /* === DROPDOWN MENU (MOBILE) === */
+        .dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-left: 15px;
+            border-left: 2px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        .dropdown.active {
+            max-height: 400px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 0;
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-weight: 500;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            color: var(--primary);
+            padding-left: 10px;
+        }
+
+        /* === PAGE HERO === */
+        .page-hero {
+            height: 70vh;
+            min-height: 400px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(187, 0, 0, 0.8)), url('our courses/hero bg.webp');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .page-hero-content {
+            max-width: 90%;
+            z-index: 3;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 1s 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .page-hero h1 {
+            font-size: 2.8rem;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            color: var(--gray-light);
+            margin-bottom: 30px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* === SECTION TITLE === */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section-title.animated h2 {
+            animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .section-title p {
+            font-size: 1rem;
+            color: #6B7280;
+            max-width: 600px;
+            margin: 15px auto 0;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section-title.animated p {
+            animation: slideUp 0.8s 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--logo-red), var(--primary));
+            border-radius: 3px;
+            transition: transform 0.6s 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-title.animated h2::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        /* === SECTION ICON === */
+        .section-icon {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            font-size: 1.5rem;
+            color: var(--primary);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        @media (min-width: 768px) {
+            .section-icon {
+                font-size: 2rem;
+                left: 50px;
+            }
+        }
+
+        /* === COURSES DETAIL SECTION === */
+        .courses-detail-section {
+            position: relative;
+            background-color: var(--background);
+        }
+
+        .courses-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .course-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-top: 4px solid var(--primary);
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .course-card.animated {
+            animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-lg);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .course-card:hover .course-image img {
+            transform: scale(1.05);
+        }
+
+        .course-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(187, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .course-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.8rem;
+            transition: all 0.4s ease;
+        }
+
+        .course-card:hover .course-icon {
+            transform: rotate(360deg) scale(1.1);
+            background: var(--primary);
+            color: white;
+        }
+
+        .course-content {
+            padding: 25px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .course-content.animated {
+            animation: slideUp 0.6s 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .course-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .course-content p {
+            color: #6B7280;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 15px 0;
+            border-top: 1px solid var(--gray-light);
+            border-bottom: 1px solid var(--gray-light);
+            color: #6B7280;
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .course-meta.animated {
+            animation: slideUp 0.6s 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .course-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .course-meta i {
+            color: var(--primary);
+        }
+
+        .course-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .course-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .course-features i {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        /* === COURSE DETAILS MODAL === */
+        .course-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .course-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 25px;
+            background: linear-gradient(135deg, var(--primary), #000000);
+            color: var(--white);
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            position: relative;
+        }
+
+        .modal-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--white);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+            background: var(--white);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .modal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+            padding: 20px;
+            background: var(--background);
+            border-radius: var(--border-radius-sm);
+        }
+
+        .modal-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1 0 200px;
+        }
+
+        .modal-meta-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .modal-section {
+            margin: 25px 0;
+        }
+
+        .modal-section h4 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray-light);
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .modal-section li {
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .modal-section li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+
+        /* === COURSE CATEGORIES === */
+        .course-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .category-btn {
+            padding: 12px 25px;
+            background: var(--white);
+            border: 2px solid var(--gray-light);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text);
+        }
+
+        .category-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(187, 0, 0, 0.25);
+        }
+
+        .category-btn:hover:not(.active) {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* === WHATSAPP BUTTON === */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.8rem;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            z-index: 998;
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* === LOADING ANIMATION === */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #000000, var(--primary));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--white);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* === DROPDOWN FOR DESKTOP === */
+        @media (min-width: 992px) {
+            .nav-menu {
+                position: static;
+                width: auto;
+                height: auto;
+                background: transparent;
+                flex-direction: row;
+                padding: 0;
+                box-shadow: none;
+                overflow: visible;
+                display: flex;
+                right: 0;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-item {
+                margin: 0 0 0 25px;
+                width: auto;
+                position: relative;
+            }
+
+            .nav-link {
+                color: var(--white);
+                padding: 8px 0;
+                border-bottom: none;
+                font-size: 1.1rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+            }
+
+            .navbar.scrolled .nav-link {
+                color: var(--text);
+            }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: var(--logo-red);
+                transition: width 0.3s ease;
+            }
+
+            .nav-link:hover::after,
+            .nav-link.active::after {
+                width: 100%;
+            }
+
+            .nav-link:hover {
+                color: var(--logo-red);
+            }
+
+            /* Show dropdown icon on all platforms */
+            .nav-link .dropdown-icon {
+                display: inline-block;
+                margin-left: 8px;
+                font-size: 0.8rem;
+            }
+
+            .mobile-toggle {
+                display: none;
+            }
+
+            /* DROPDOWN FOR DESKTOP */
+            .dropdown {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--white);
+                min-width: 250px;
+                box-shadow: var(--box-shadow-lg);
+                border-radius: var(--border-radius-sm);
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(20px);
+                transition: all 0.4s ease;
+                z-index: 1001;
+                padding: 10px 0;
+                max-height: none;
+                border-left: none;
+                padding-left: 0;
+                margin-left: 0;
+                display: block;
+            }
+
+            .dropdown.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(10px);
+                max-height: none;
+            }
+
+            .nav-item:hover .dropdown {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(10px);
+            }
+
+            .dropdown-item {
+                padding: 12px 25px;
+                color: var(--text);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                display: block;
+            }
+
+            .dropdown-item:hover {
+                background: rgba(187, 0, 0, 0.05);
+                color: var(--primary);
+                padding-left: 30px;
+            }
+        }
+
+        /* === TABLET STYLES === */
+        @media (min-width: 768px) {
+            .page-hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .page-hero p {
+                font-size: 1.3rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+
+            .section-title p {
+                font-size: 1.1rem;
+            }
+
+            .courses-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .course-card {
+                min-height: 450px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .course-content {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .course-content p {
+                flex-grow: 1;
+            }
+        }
+
+        /* === DESKTOP STYLES === */
+        @media (min-width: 992px) {
+            .courses-container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .course-card {
+                min-height: 500px;
+            }
+
+            .course-card:hover {
+                transform: translateY(-15px);
+            }
+
+            .page-hero h1 {
+                font-size: 4rem;
+            }
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: linear-gradient(135deg, #000000, var(--primary));
+            color: var(--white);
+            padding: 60px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .footer-column.animated {
+            animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--logo-red);
+        }
+
+        .footer-column p {
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--logo-red);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.4s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background-color: var(--logo-red);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d1d5db;
+            font-size: 0.9rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .footer-container {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/1234567890" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-laptop-code"></i> <span>Sohoj</span> <span>IT</span></a>
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">
+                        <span>About Us</span>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown">
+                        <a href="about.html" class="dropdown-item">About Company</a>
+                        <a href="team.html" class="dropdown-item">Our Team</a>
+                        <a href="#mission-vision" class="dropdown-item">Mission & Vision</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="courses.html" class="nav-link active">
+                        <span>Courses</span>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown">
+                        <a href="web-development-course.html" class="dropdown-item">Web Development</a>
+                        <a href="graphic-design-course.html" class="dropdown-item">Graphic Design</a>
+                        <a href="digital-marketing-course.html" class="dropdown-item">Digital Marketing</a>
+                        <a href="programming-course.html" class="dropdown-item">Programming</a>
+                        <a href="freelancing-course.html" class="dropdown-item">Freelancing</a>
+                        <a href="basic-computer-course.html" class="dropdown-item">Basic Computer</a>
+                        <a href="office-course.html" class="dropdown-item">Advance Office</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html" class="nav-link">
+                        <span>Services</span>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown">
+                        <a href="#corporate-training" class="dropdown-item">Corporate Training</a>
+                        <a href="#it-consultancy" class="dropdown-item">IT Consultancy</a>
+                        <a href="#web-development-service" class="dropdown-item">Web Development</a>
+                        <a href="#digital-marketing-service" class="dropdown-item">Digital Marketing</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="clients.html" class="nav-link">Clients</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container page-hero-content">
+            <h1>Our Courses</h1>
+            <p>Transform your career with our industry-leading IT courses. Learn from experts and gain practical skills that employers demand.</p>
+            <a href="#courses-list" class="btn btn-primary">Explore All Courses</a>
+        </div>
+    </section>
+
+    <!-- Course Categories -->
+    <section class="courses-detail-section">
+        <div class="container">
+            
+            
+            
+            
+            <div class="section-title">
+                <h2 id="courses-list">All Courses</h2>
+                <p>Choose from our comprehensive range of IT courses</p>
+            </div>
+            
+            <div class="courses-container">
+                <!-- Courses will be generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Details Modal -->
+    <div class="course-modal" id="courseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-times close-modal"></i>
+                <h3 id="modalCourseTitle">Course Title</h3>
+                <p id="modalCourseCategory">Category</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta">
+                    <div class="modal-meta-item">
+                        <i class="far fa-clock"></i>
+                        <span id="modalCourseDuration">Duration</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <i class="fas fa-project-diagram"></i>
+                        <span id="modalCourseProjects">Projects</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <i class="fas fa-users"></i>
+                        <span id="modalCourseLevel">Level</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <i class="fas fa-certificate"></i>
+                        <span id="modalCourseCertification">Certification</span>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>Course Overview</h4>
+                    <p id="modalCourseDescription">Course description will appear here...</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>What You'll Learn</h4>
+                    <ul id="modalCourseModules">
+                        <!-- Modules will be added by JavaScript -->
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>Career Opportunities</h4>
+                    <ul id="modalCourseCareers">
+                        <!-- Careers will be added by JavaScript -->
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>Prerequisites</h4>
+                    <ul id="modalCoursePrerequisites">
+                        <!-- Prerequisites will be added by JavaScript -->
+                    </ul>
+                </div>
+                
+                <div style="display: flex; gap: 15px; margin-top: 30px;">
+                    <a href="#contact" class="btn btn-primary">Enroll Now</a>
+                    <a href="#" class="btn btn-outline">Download Syllabus</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>About Sohoj IT</h3>
+                    <p>Sohoj IT is a premier IT training institute and solutions agency dedicated to providing high-quality education and services in modern technology.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Courses</h3>
+                    <ul>
+                        <li><a href="#web-development">Web Development</a></li>
+                        <li><a href="#graphic-design">Graphic Design</a></li>
+                        <li><a href="#digital-marketing">Digital Marketing</a></li>
+                        <li><a href="#programming">Programming</a></li>
+                        <li><a href="#freelancing">Freelancing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 IT Tower, Dhaka</li>
+                        <li><i class="fas fa-phone-alt"></i> +880 1234 567890</li>
+                        <li><i class="fas fa-envelope"></i> info@sohojit.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Sohoj IT. All Rights Reserved. | Institute & IT Solutions Agency</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // === COURSES DATA ===
+    const coursesData = [
+        {
+            id: 1,
+            title: "Full Stack Web Development",
+            description: "Learn HTML, CSS, JavaScript, React, Node.js, MongoDB and become a full-stack developer. Build real-world projects and deploy them online.",
+            category: "web",
+            icon: "fas fa-code",
+            duration: "6 Months",
+            projects: "15+ Projects",
+            level: "Beginner to Advanced",
+            certification: "Yes",
+            image: "our courses/Full Stack Web Development.png",
+            modules: [
+                "HTML5 & CSS3 Fundamentals",
+                "JavaScript & ES6+",
+                "React.js & Redux",
+                "Node.js & Express.js",
+                "MongoDB & Database Design",
+                "RESTful APIs",
+                "Git & GitHub",
+                "Deployment & DevOps Basics"
+            ],
+            careers: ["Frontend Developer", "Backend Developer", "Full Stack Developer", "Web Application Developer"],
+            prerequisites: ["Basic Computer Knowledge", "Logical Thinking"]
+        },
+        {
+            id: 2,
+            title: "Professional Graphic Design",
+            description: "Master Adobe Photoshop, Illustrator, InDesign for professional graphic design. Learn branding, UI design, and print media design.",
+            category: "design",
+            icon: "fas fa-paint-brush",
+            duration: "4 Months",
+            projects: "12+ Projects",
+            level: "Beginner to Intermediate",
+            certification: "Yes",
+            image: "our courses/Professional Graphic Design.jpg",
+            modules: [
+                "Adobe Photoshop Mastery",
+                "Adobe Illustrator Essentials",
+                "Logo & Brand Identity Design",
+                "UI/UX Design Principles",
+                "Print Media Design",
+                "Social Media Graphics",
+                "Portfolio Development"
+            ],
+            careers: ["Graphic Designer", "UI Designer", "Brand Designer", "Digital Artist"],
+            prerequisites: ["Creative Mindset", "Basic Computer Skills"]
+        },
+        {
+            id: 3,
+            title: "Digital Marketing Mastery",
+            description: "Learn SEO, Social Media Marketing, Google Ads, content marketing strategies, and analytics to become a digital marketing expert.",
+            category: "marketing",
+            icon: "fas fa-chart-line",
+            duration: "3 Months",
+            projects: "10+ Campaigns",
+            level: "Beginner to Advanced",
+            certification: "Yes",
+            image: "our courses/Digital Marketing Mastery.jpg",
+            modules: [
+                "SEO Fundamentals",
+                "Social Media Marketing",
+                "Google Ads & PPC",
+                "Content Marketing",
+                "Email Marketing",
+                "Analytics & Reporting",
+                "E-commerce Marketing"
+            ],
+            careers: ["Digital Marketing Specialist", "SEO Expert", "Social Media Manager", "Content Marketer"],
+            prerequisites: ["Basic Internet Knowledge", "Communication Skills"]
+        },
+        {
+            id: 4,
+            title: "Python Programming & Data Science",
+            description: "Start with Python basics, then move to data analysis, automation, machine learning basics, and web development with Django.",
+            category: "programming",
+            icon: "fab fa-python",
+            duration: "5 Months",
+            projects: "20+ Projects",
+            level: "Beginner to Intermediate",
+            certification: "Yes",
+            image: "our courses/Python Programming & Data Science.webp",
+            modules: [
+                "Python Fundamentals",
+                "Data Structures & Algorithms",
+                "Data Analysis with Pandas",
+                "Data Visualization",
+                "Automation Scripting",
+                "Web Scraping",
+                "Django Web Framework"
+            ],
+            careers: ["Python Developer", "Data Analyst", "Automation Engineer", "Backend Developer"],
+            prerequisites: ["Logical Thinking", "Basic Math"]
+        },
+        {
+            id: 5,
+            title: "UI/UX Design Specialization",
+            description: "Learn user interface and experience design with Figma, Adobe XD, prototyping, user research, and design systems.",
+            category: "design",
+            icon: "fas fa-object-group",
+            duration: "4 Months",
+            projects: "12+ Projects",
+            level: "Beginner to Advanced",
+            certification: "Yes",
+            image: "our courses/UI-UX Design Specialization.jpg",
+            modules: [
+                "UI Design Principles",
+                "UX Research Methods",
+                "Wireframing & Prototyping",
+                "Figma Mastery",
+                "Design Systems",
+                "Mobile App Design",
+                "Portfolio Building"
+            ],
+            careers: ["UI Designer", "UX Designer", "Product Designer", "Interaction Designer"],
+            prerequisites: ["Creative Thinking", "Basic Design Sense"]
+        },
+        {
+            id: 6,
+            title: "Freelancing Career Development",
+            description: "Learn how to start and grow your freelancing career from scratch. Master client communication, pricing, and platform management.",
+            category: "freelance",
+            icon: "fas fa-laptop-house",
+            duration: "2 Months",
+            projects: "8+ Real Projects",
+            level: "All Levels",
+            certification: "Yes",
+            image: "our courses/Freelancing Career Development.jpg",
+            modules: [
+                "Freelancing Platforms",
+                "Client Communication",
+                "Proposal Writing",
+                "Pricing Strategies",
+                "Time Management",
+                "Contract & Legal",
+                "Building Portfolio"
+            ],
+            careers: ["Freelance Developer", "Freelance Designer", "Digital Marketer", "Consultant"],
+            prerequisites: ["Any IT Skill", "Communication Skills"]
+        },
+        {
+            id: 7,
+            title: "Microsoft Office Mastery",
+            description: "Master Microsoft Word, Excel, PowerPoint, and Outlook for professional office work. Learn advanced formulas, macros, and automation.",
+            category: "office",
+            icon: "fas fa-file-excel",
+            duration: "2 Months",
+            projects: "10+ Practical Tasks",
+            level: "Beginner to Advanced",
+            certification: "Yes",
+            image: "our courses/Microsoft Office Mastery.jpg",
+            modules: [
+                "Microsoft Word Advanced",
+                "Excel Formulas & Functions",
+                "Data Analysis in Excel",
+                "PowerPoint Presentations",
+                "Outlook & Email Management",
+                "Office Automation",
+                "Collaboration Tools"
+            ],
+            careers: ["Office Administrator", "Data Entry Specialist", "Executive Assistant", "Account Assistant"],
+            prerequisites: ["Basic Computer Knowledge", "Typing Skills"]
+        },
+        {
+            id: 8,
+            title: "Mobile App Development",
+            description: "Learn to build mobile applications for Android and iOS using React Native. Create cross-platform apps with modern JavaScript.",
+            category: "web",
+            icon: "fas fa-mobile-alt",
+            duration: "4 Months",
+            projects: "8+ Mobile Apps",
+            level: "Intermediate",
+            certification: "Yes",
+            image: "our courses/Mobile App Development.jpg",
+            modules: [
+                "React Native Fundamentals",
+                "Mobile UI Design",
+                "Navigation & Routing",
+                "API Integration",
+                "State Management",
+                "App Deployment",
+                "Performance Optimization"
+            ],
+            careers: ["Mobile App Developer", "React Native Developer", "Cross-platform Developer"],
+            prerequisites: ["JavaScript Basics", "React Fundamentals"]
+        },
+        {
+            id: 9,
+            title: "Data Analytics with Excel & Power BI",
+            description: "Learn data analysis, visualization, and business intelligence using Excel and Microsoft Power BI for data-driven decision making.",
+            category: "office",
+            icon: "fas fa-chart-bar",
+            duration: "3 Months",
+            projects: "10+ Dashboards",
+            level: "Beginner to Intermediate",
+            certification: "Yes",
+            image: "our courses/Data Analytics with Excel & Power BI.jpg",
+            modules: [
+                "Advanced Excel Analytics",
+                "Power Query & Power Pivot",
+                "DAX Formulas",
+                "Power BI Desktop",
+                "Data Visualization",
+                "Dashboard Design",
+                "Business Reporting"
+            ],
+            careers: ["Data Analyst", "Business Analyst", "Reporting Specialist", "BI Developer"],
+            prerequisites: ["Basic Excel Knowledge", "Analytical Thinking"]
+        }
+    ];
+
+    // === INITIALIZATION ===
+    document.addEventListener('DOMContentLoaded', function() {
+        generateCourses();
+        initScrollAnimations();
+        setupEventListeners();
+        setupDropdowns();
+        setupCategoryFilters();
+        setupModal();
+    });
+
+    // === GENERATE COURSES ===
+    function generateCourses(filterCategory = 'all') {
+        const container = document.querySelector('.courses-container');
+        if (!container) return;
+
+        container.innerHTML = '';
+        
+        const filteredCourses = filterCategory === 'all' 
+            ? coursesData 
+            : coursesData.filter(course => course.category === filterCategory);
+        
+        if (filteredCourses.length === 0) {
+            container.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                    <i class="fas fa-search" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+                    <h3>No courses found in this category</h3>
+                    <p>Please select another category or check back soon for new courses.</p>
+                </div>
+            `;
+            return;
+        }
+        
+        filteredCourses.forEach((course, index) => {
+            const card = document.createElement('div');
+            card.className = 'course-card';
+            card.dataset.category = course.category;
+            card.dataset.id = course.id;
+            card.style.transitionDelay = `${index * 0.1}s`;
+            
+            // Create image with error handling
+            const imgSrc = course.image || 'images/placeholder-course.jpg';
+            
+            card.innerHTML = `
+                <div class="course-image">
+                    <img src="${imgSrc}" alt="${course.title}" loading="lazy">
+                    <div class="course-overlay">
+                        <div class="course-icon">
+                            <i class="${course.icon}"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-content">
+                    <span style="display: inline-block; background: rgba(187, 0, 0, 0.1); color: var(--primary); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin-bottom: 10px; font-weight: 600;">${getCategoryName(course.category)}</span>
+                    <h3>${course.title}</h3>
+                    <p>${course.description}</p>
+                    <div class="course-meta">
+                        <span><i class="far fa-clock"></i> ${course.duration}</span>
+                        <span><i class="fas fa-project-diagram"></i> ${course.projects}</span>
+                        <span><i class="fas fa-signal"></i> ${course.level}</span>
+                    </div>
+                    <ul class="course-features">
+                        ${course.modules.slice(0, 3).map(module => `<li><i class="fas fa-check-circle"></i> ${module}</li>`).join('')}
+                    </ul>
+                    <div style="display: flex; gap: 10px; margin-top: auto;">
+                        <button class="btn btn-primary view-details-btn" style="flex: 1;">View Details</button>
+                        <a href="#contact" class="btn btn-outline" style="flex: 1;">Enroll Now</a>
+                    </div>
+                </div>
+            `;
+            
+            // Add error handling for image
+            const img = card.querySelector('img');
+            img.onerror = function() {
+                this.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 250"><rect width="400" height="250" fill="%23f3f4f6"/><text x="200" y="125" text-anchor="middle" fill="%239ca3af" font-family="Arial" font-size="16">${course.title}</text></svg>';
+            };
+            
+            container.appendChild(card);
+        });
+        
+        // Add event listeners to view details buttons
+        document.querySelectorAll('.view-details-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const courseId = this.closest('.course-card').dataset.id;
+                showCourseDetails(courseId);
+            });
+        });
+    }
+
+    function getCategoryName(category) {
+        const categories = {
+            'web': 'Web Development',
+            'design': 'Graphic Design',
+            'marketing': 'Digital Marketing',
+            'programming': 'Programming',
+            'freelance': 'Freelancing',
+            'office': 'Office Applications'
+        };
+        return categories[category] || category;
+    }
+
+    // === CATEGORY FILTERS ===
+    function setupCategoryFilters() {
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Filter courses
+                const category = this.dataset.category;
+                generateCourses(category);
+                
+                // Scroll to courses section
+                document.getElementById('courses-list').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    }
+
+    // === COURSE DETAILS MODAL ===
+    function setupModal() {
+        const modal = document.getElementById('courseModal');
+        const closeModal = document.querySelector('.close-modal');
+        
+        if (!modal || !closeModal) return;
+        
+        // Close modal when clicking close button
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    function showCourseDetails(courseId) {
+        const course = coursesData.find(c => c.id == courseId);
+        if (!course) return;
+        
+        const modal = document.getElementById('courseModal');
+        
+        // Update modal content
+        document.getElementById('modalCourseTitle').textContent = course.title;
+        document.getElementById('modalCourseCategory').textContent = getCategoryName(course.category);
+        document.getElementById('modalCourseDuration').textContent = course.duration;
+        document.getElementById('modalCourseProjects').textContent = course.projects;
+        document.getElementById('modalCourseLevel').textContent = course.level;
+        document.getElementById('modalCourseCertification').textContent = course.certification;
+        document.getElementById('modalCourseDescription').textContent = course.description;
+        
+        // Update modules
+        const modulesList = document.getElementById('modalCourseModules');
+        modulesList.innerHTML = '';
+        course.modules.forEach(module => {
+            const li = document.createElement('li');
+            li.textContent = module;
+            modulesList.appendChild(li);
+        });
+        
+        // Update careers
+        const careersList = document.getElementById('modalCourseCareers');
+        careersList.innerHTML = '';
+        course.careers.forEach(career => {
+            const li = document.createElement('li');
+            li.textContent = career;
+            careersList.appendChild(li);
+        });
+        
+        // Update prerequisites
+        const prereqList = document.getElementById('modalCoursePrerequisites');
+        prereqList.innerHTML = '';
+        course.prerequisites.forEach(prereq => {
+            const li = document.createElement('li');
+            li.textContent = prereq;
+            prereqList.appendChild(li);
+        });
+        
+        // Show modal
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // === DROPDOWN FUNCTIONALITY ===
+    function setupDropdowns() {
+        const dropdownTriggers = document.querySelectorAll('.nav-link');
+        
+        dropdownTriggers.forEach(trigger => {
+            if (trigger.querySelector('.dropdown-icon')) {
+                const dropdown = trigger.parentElement.querySelector('.dropdown');
+                
+                // Mobile click handler - toggle dropdown when clicking the link
+                trigger.addEventListener('click', (e) => {
+                    // Only handle dropdown toggle on mobile
+                    if (window.innerWidth < 992) {
+                        // Check if click was on the text or the icon
+                        const clickedIcon = e.target.closest('.dropdown-icon');
+                        const clickedText = e.target.closest('span');
+                        
+                        // If clicking on the text (not icon), allow normal navigation
+                        if (clickedText && !clickedIcon) {
+                            return; // Allow default behavior
+                        }
+                        
+                        // If clicking on icon or empty space in the link, toggle dropdown
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        const isActive = dropdown.classList.contains('active');
+                        
+                        // Close all other dropdowns
+                        document.querySelectorAll('.dropdown').forEach(d => {
+                            if (d !== dropdown) {
+                                d.classList.remove('active');
+                                d.previousElementSibling?.querySelector('.dropdown-icon')?.classList.remove('rotated');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        dropdown.classList.toggle('active');
+                        
+                        // Rotate icon
+                        const icon = trigger.querySelector('.dropdown-icon');
+                        if (isActive) {
+                            icon.classList.remove('rotated');
+                        } else {
+                            icon.classList.add('rotated');
+                        }
+                    }
+                });
+                
+                // Desktop hover handler
+                trigger.parentElement.addEventListener('mouseenter', () => {
+                    if (window.innerWidth >= 992) {
+                        dropdown.classList.add('active');
+                        trigger.querySelector('.dropdown-icon')?.classList.add('rotated');
+                    }
+                });
+                
+                trigger.parentElement.addEventListener('mouseleave', () => {
+                    if (window.innerWidth >= 992) {
+                        dropdown.classList.remove('active');
+                        trigger.querySelector('.dropdown-icon')?.classList.remove('rotated');
+                    }
+                });
+            }
+        });
+        
+        // Close dropdowns when clicking outside (mobile only)
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth < 992) {
+                if (!e.target.closest('.nav-item')) {
+                    document.querySelectorAll('.dropdown').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(icon => {
+                        icon.classList.remove('rotated');
+                    });
+                }
+            }
+        });
+    }
+
+    // === SCROLL ANIMATIONS ===
+    function initScrollAnimations() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    
+                    // Animate child elements with delays
+                    if (entry.target.classList.contains('course-card')) {
+                        const content = entry.target.querySelector('.course-content');
+                        const meta = entry.target.querySelector('.course-meta');
+                        if (content) content.classList.add('animated');
+                        if (meta) meta.classList.add('animated');
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        // Observe all animatable elements
+        document.querySelectorAll('.section-title, .course-card, .footer-column').forEach(el => {
+            observer.observe(el);
+        });
+    }
+
+    // === EVENT LISTENERS ===
+    function setupEventListeners() {
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            const logo = document.querySelector('.logo');
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            
+            if (window.scrollY > 100) {
+                navbar?.classList.add('scrolled');
+                logo?.classList.add('scrolled-logo');
+                mobileToggle?.classList.add('scrolled-toggle');
+            } else {
+                navbar?.classList.remove('scrolled');
+                logo?.classList.remove('scrolled-logo');
+                mobileToggle?.classList.remove('scrolled-toggle');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle('active');
+                mobileToggle.classList.toggle('active');
+                mobileToggle.innerHTML = navMenu.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+                
+                // Close all dropdowns when closing menu
+                if (!navMenu.classList.contains('active')) {
+                    document.querySelectorAll('.dropdown').forEach(d => {
+                        d.classList.remove('active');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(icon => {
+                        icon.classList.remove('rotated');
+                    });
+                }
+            });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth < 992) {
+                const navMenu = document.querySelector('.nav-menu');
+                const mobileToggle = document.querySelector('.mobile-toggle');
+                
+                if (navMenu?.classList.contains('active') && 
+                    !e.target.closest('.nav-menu') && 
+                    !e.target.closest('.mobile-toggle')) {
+                    navMenu.classList.remove('active');
+                    mobileToggle?.classList.remove('active');
+                    if (mobileToggle) {
+                        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                    document.body.style.overflow = '';
+                    
+                    // Close all dropdowns
+                    document.querySelectorAll('.dropdown').forEach(d => {
+                        d.classList.remove('active');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(icon => {
+                        icon.classList.remove('rotated');
+                    });
+                }
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#' || targetId.startsWith('#!')) return;
+                
+                // Don't prevent default for dropdown items (they should navigate)
+                if (this.classList.contains('dropdown-item')) {
+                    return;
+                }
+                
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    if (window.innerWidth < 992) {
+                        const navMenu = document.querySelector('.nav-menu');
+                        const mobileToggle = document.querySelector('.mobile-toggle');
+                        if (navMenu?.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                            mobileToggle?.classList.remove('active');
+                            if (mobileToggle) {
+                                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                            }
+                            document.body.style.overflow = '';
+                        }
+                    }
+                }
+            });
+        });
+    }
+
+    // === LOADING SCREEN ===
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.querySelector('.loading')?.classList.add('hidden');
+        }, 500);
+    });
+    </script>
+</body>
+</html>
